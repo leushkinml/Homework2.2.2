@@ -1,4 +1,5 @@
 public class Main {
+
     public static void main(String[] args) {
 
         // ДЗ 1: 3-е задание
@@ -65,6 +66,12 @@ public class Main {
         System.out.println(bmw);
         System.out.println(kia);
         System.out.println(hyundai);
+
+        System.out.println();
+
+        // ДЗ 3: 2-е задание
+        Car chayka = new Car("GAZ");
+        System.out.println(chayka);
     }
 
     // ДЗ 1: 3-е задание

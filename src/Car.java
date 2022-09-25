@@ -13,20 +13,43 @@ public class Car {
     */
 
     // ДЗ 2: 2-е задание
-    private final String brand;
-    private final String model;
+    private String brand;
+    private String model;
     private double engineVolume;
     private String color;
     private int productionYear;
     private String productionCountry;
 
-    public Car(String brand, String model, double engineVolume, String color, int productionYear, String productionCountry) {
-        this.brand = brand;
-        this.model = model;
+    // ДЗ 3: 2-е задание
+    public Car(String brand) {
+        this(brand, "default", 1.5, "белый", 2000, "default");
+    }
+
+    public Car(String brand, String model, double engineVolume,
+               String color, int productionYear,
+               String productionCountry) {
+
+        if (brand != null) {
+            this.brand = brand;
+        } else {
+            this.brand = "default";
+        }
+
+        if (model != null) {
+            this.model = model;
+        } else {
+            this.model = "default";
+        }
+
         this.engineVolume = engineVolume;
         this.color = color;
         this.productionYear = productionYear;
-        this.productionCountry = productionCountry;
+
+        if (productionCountry != null) {
+            this.productionCountry = productionCountry;
+        } else {
+            this.productionCountry = "default";
+        }
     }
 
     public String getBrand() {
