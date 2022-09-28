@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -54,11 +56,14 @@ public class Main {
 
         // ДЗ 2: 2-е задание
 
-        Car lada = new Car("Lada", "Granta", 1.7, "жёлтый", 2015, "Россия", "АКПП", "Хэчбэк", "f555jj666", 4, false, null, null);
-        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, "чёрный", 2020, "Германия", "АКПП", "Хэчбэк", "z123ov456", 7, true, null, null);
-        Car bmw = new Car("BMW", "Z8", 3.0, "чёрный", 2021, "Германия", "", "", "", 4, false, null, null);
-        Car kia = new Car("Kia", "Sportage", 2.4, "красный", 2018, "Южная Корея", "", "", "", 4, false, null, null);
-        Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея", "", "", "", 4, false, null, null);
+        Car lada = new Car("Lada", "Granta", 1.7, "жёлтый", 2015, "Россия", "АКПП", "Хэчбэк", "f555jj666", 4, false, new Car.Key(true, true), null);
+        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, "чёрный", 2020, "Германия", "АКПП", "Хэчбэк", "z123ov456", 7, true, new Car.Key(false, true), new Car.Insurance(LocalDate.now(), 456.52, "58745"));
+        Car bmw = new Car("BMW", "Z8", 3.0, "чёрный", 2021, "Германия", "АКПП", "Внедорожник", "Кабриолет", 4, false, new Car.Key(true, false), new Car.Insurance(LocalDate.of(2022, 07, 11), 555.55, "153654123564"));
+        Car kia = new Car("Kia", "Sportage", 2.4, "красный", 2018, "Южная Корея", "АКПП", "Минивэн", "п545пр456", 5, false, new Car.Key(false, true), null);
+        Car hyundai = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016, "Южная Корея", "АКПП", "Кроссовер", "g879gh569", 9, false, new Car.Key(false, false), null);
+
+        lada.setKey(new Car.Key(false,false));
+        lada.setInsurance(new Car.Insurance(LocalDate.of(2022, 12, 31), 777.77, "153654152"));
 
 
         System.out.println(lada);

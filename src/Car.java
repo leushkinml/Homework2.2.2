@@ -39,7 +39,7 @@ public class Car {
                 "default", "МКПП", "Седан",
                 "x000xx000", 5, false,
                 new Key(false, false),
-                new Insurance(null, 0.0, "111111111"));
+                new Insurance(null, 0.0, "000000000"));
     }
 
     public Car(String brand, String model, double engineVolume,
@@ -102,11 +102,10 @@ public class Car {
         }
 
         if (insurance == null) {
-            this.insurance = new Insurance(null, 0.00, "111111111");
+            this.insurance = new Insurance(null, 0.00, "000000000");
         } else {
             this.insurance = insurance;
         }
-
     }
 
     public String getBrand() {
@@ -207,12 +206,27 @@ public class Car {
 
     public static class Key {
 
-        private boolean remoteEngineStart;
-        private boolean keylessAccess;
+        private final boolean remoteEngineStart;
+        private final boolean keylessAccess;
 
         public Key(boolean remoteEngineStart, boolean keylessAccess) {
             this.remoteEngineStart = remoteEngineStart;
             this.keylessAccess = keylessAccess;
+        }
+
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+
+        public boolean isKeylessAccess() {
+            return keylessAccess;
+        }
+
+        @Override
+        public String toString() {
+            return "Ключ: " +
+                    "Удалённый запуск двикателя: " + remoteEngineStart +
+                    ", Бесключевой доступ: " + keylessAccess;
         }
     }
 
@@ -227,18 +241,28 @@ public class Car {
     public static class Insurance {
         private final LocalDate durationOfInsurance;
         private final double insuranceCost;
-        private final String insuranceNumber;
+        private String insuranceNumber;
+
+        @Override
+        public String toString() {
+            return "Страховка: " +
+                    "Срок действия страховки: " + durationOfInsurance +
+                    ", Стоимость страховки: " + insuranceCost +
+                    ", Номер страховки: " + insuranceNumber + '.';
+        }
 
         public Insurance(LocalDate durationOfInsurance, double insuranceCost, String insuranceNumber) {
             if (durationOfInsurance == null) {
-                this.durationOfInsurance = LocalDate.now().plusDays(365);
+                this.durationOfInsurance = LocalDate.of(0000, 01, 01);
             } else {
                 this.durationOfInsurance = durationOfInsurance;
             }
             this.insuranceCost = insuranceCost;
 
             if (insuranceNumber == null) {
-                this.insuranceNumber = "111111111";
+                this.insuranceNumber = "Номер страховки отсутствует";
+            } else if (insuranceNumber.length() != 9) {
+                this.insuranceNumber = "Номер страховки некорректный";
             } else {
                 this.insuranceNumber = insuranceNumber;
             }
@@ -269,6 +293,14 @@ public class Car {
         }
     }
 
+    public Insurance getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
+    }
+
     @Override
     public String toString() {
         return "Автомобиль марки: '" + brand + '\'' +
@@ -282,24 +314,10 @@ public class Car {
                 ", Регистрационный номер: '" + registrationNumber + '\'' +
                 ", Количество мест: " + numberOfSeats +
                 ", Тип резины: " + (isTiresType () ? "летняя" : "зимняя") +
-                ", key=" + key +
-                ", insurance=" + insurance +
-                '}';
+                ", Тип доступа: " + (getKey().isKeylessAccess() ? "Доступ с ключом" : "Безключевой доступ") +
+                ", Тип запуска двигателя: " + (getKey().isRemoteEngineStart() ? "Удалённый запуск" : "Обычный запуск")+
+                ", " + insurance ;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Автомобиль марки: '" + brand + '\'' +
-//                ", Модель: '" + model + '\'' +
-//                ", Объём двигателя в литрах: " + engineVolume +
-//                ", Цвет: '" + color + '\'' +
-//                ", Год производства: " + productionYear +
-//                ", Страна сборки: '" + productionCountry + '\'' +
-//                ", Коробка передач: '" + transmission + '\'' +
-//                ", Тип кузова: '" + bodyType + '\'' +
-//                ", Регистрационный номер: '" + registrationNumber + '\'' +
-//                ", Количество мест: " + numberOfSeats +
-//                ", Тип резины: " + (isTiresType () ? "летняя" : "зимняя") +
-//                ".";
-//    }
+
 }
