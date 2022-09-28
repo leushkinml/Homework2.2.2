@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Car {
@@ -13,21 +14,39 @@ public class Car {
     */
 
     // ДЗ 2: 2-е задание
-    private String brand;
-    private String model;
+    private final String brand;
+    private final String model;
     private double engineVolume;
     private String color;
     private int productionYear;
+
     private String productionCountry;
+
+
+    private String transmission;
+    private final String bodyType;
+    private String registrationNumber;
+    private final int numberOfSeats;
+    private boolean tiresType;
+
+    private Key key;
+    private Insurance insurance;
+
 
     // ДЗ 3: 2-е задание
     public Car(String brand) {
-        this(brand, "default", 1.5, "белый", 2000, "default");
+        this(brand, "default", 1.5, "белый", 2000,
+                "default", "МКПП", "Седан",
+                "x000xx000", 5, false,
+                new Key(false, false),
+                new Insurance(null, 0.0, "111111111"));
     }
 
     public Car(String brand, String model, double engineVolume,
                String color, int productionYear,
-               String productionCountry) {
+               String productionCountry, String transmission,
+               String bodyType, String registrationNumber,
+               int numberOfSeats, boolean tiresType, Key key, Insurance insurance) {
 
         if (brand != null) {
             this.brand = brand;
@@ -50,6 +69,44 @@ public class Car {
         } else {
             this.productionCountry = "default";
         }
+
+
+        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+            this.transmission = "МКПП";
+        } else {
+            this.transmission = transmission;
+        }
+        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
+            this.bodyType = "Седан";
+        } else {
+            this.bodyType = bodyType;
+        }
+        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()) {
+            this.registrationNumber = "x000xx000";
+        } else {
+            this.registrationNumber = registrationNumber;
+        }
+
+        if (numberOfSeats <= 0) {
+            this.numberOfSeats = 5;
+        } else {
+            this.numberOfSeats = numberOfSeats;
+        }
+
+        this.tiresType = tiresType;
+
+        if (key == null) {
+            this.key = new Key(false, false);
+        } else {
+            this.key = key;
+        }
+
+        if (insurance == null) {
+            this.insurance = new Insurance(null, 0.00, "111111111");
+        } else {
+            this.insurance = insurance;
+        }
+
     }
 
     public String getBrand() {
@@ -92,20 +149,124 @@ public class Car {
         this.productionCountry = productionCountry;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-        Car car = (Car) o;
-        return getEngineVolume() == car.getEngineVolume() && getProductionYear() == car.getProductionYear() &&
-                getBrand().equals(car.getBrand()) && getModel().equals(car.getModel()) &&
-                getColor().equals(car.getColor()) && getProductionCountry().equals(car.getProductionCountry());
+    public String getBodyType() {
+        return bodyType;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getBrand(), getModel(), getEngineVolume(), getColor(),
-                getProductionYear(), getProductionCountry());
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public String getTransmission() {
+        return transmission;
+    }
+    public void setTransmission(String transmission) {
+        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+            this.transmission = "МКПП";
+        } else {
+            this.transmission = transmission;
+        }
+    }
+
+    public String getRegistrationNumber() {
+        return registrationNumber;
+    }
+
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber = registrationNumber;
+    }
+
+    public boolean isTiresType () {
+            return tiresType;
+    }
+
+    public void setTiresType ( boolean tiresType){
+            this.tiresType = tiresType;
+    }
+
+    public void shangeTypeOfTires() {
+        tiresType = !tiresType;
+    }
+
+    public boolean chekingRegistrationNumber() {
+        if(registrationNumber.length()!=9) {
+            return false;
+        }
+        char[] chars = registrationNumber.toCharArray();
+        if (!Character.isAlphabetic(chars[0]) || !Character.isAlphabetic(chars[4]) ||
+                !Character.isAlphabetic(chars[5])) {
+            return false;
+        }
+        if (!Character.isDigit(chars[1]) || !Character.isDigit(chars[2]) ||
+                !Character.isDigit(chars[3]) || !Character.isDigit(chars[6]) ||
+                !Character.isDigit(chars[7]) || !Character.isDigit(chars[8])) {
+            return false;
+        }
+        return true;
+    }
+
+    public static class Key {
+
+        private boolean remoteEngineStart;
+        private boolean keylessAccess;
+
+        public Key(boolean remoteEngineStart, boolean keylessAccess) {
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessAccess = keylessAccess;
+        }
+    }
+
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public static class Insurance {
+        private final LocalDate durationOfInsurance;
+        private final double insuranceCost;
+        private final String insuranceNumber;
+
+        public Insurance(LocalDate durationOfInsurance, double insuranceCost, String insuranceNumber) {
+            if (durationOfInsurance == null) {
+                this.durationOfInsurance = LocalDate.now().plusDays(365);
+            } else {
+                this.durationOfInsurance = durationOfInsurance;
+            }
+            this.insuranceCost = insuranceCost;
+
+            if (insuranceNumber == null) {
+                this.insuranceNumber = "111111111";
+            } else {
+                this.insuranceNumber = insuranceNumber;
+            }
+        }
+
+        public LocalDate getDurationOfInsurance() {
+            return durationOfInsurance;
+        }
+
+        public double getInsuranceCost() {
+            return insuranceCost;
+        }
+
+        public String getInsuranceNumber() {
+            return insuranceNumber;
+        }
+        public void checkDurationOfInsurance() {
+            if (durationOfInsurance.isBefore(LocalDate.now()) ||
+                    durationOfInsurance.isEqual(LocalDate.now())) {
+                System.out.println("Нужно срочно ехать оформлять новую страховку.");
+            }
+        }
+
+        public void checkInsuranceNumber() {
+            if (insuranceNumber.length() != 9) {
+                System.out.println("Номер страховки некорректный.");
+            }
+        }
     }
 
     @Override
@@ -116,6 +277,29 @@ public class Car {
                 ", Цвет: '" + color + '\'' +
                 ", Год производства: " + productionYear +
                 ", Страна сборки: '" + productionCountry + '\'' +
-                '.';
+                ", Коробка передач: '" + transmission + '\'' +
+                ", Тип кузова: '" + bodyType + '\'' +
+                ", Регистрационный номер: '" + registrationNumber + '\'' +
+                ", Количество мест: " + numberOfSeats +
+                ", Тип резины: " + (isTiresType () ? "летняя" : "зимняя") +
+                ", key=" + key +
+                ", insurance=" + insurance +
+                '}';
     }
+
+//    @Override
+//    public String toString() {
+//        return "Автомобиль марки: '" + brand + '\'' +
+//                ", Модель: '" + model + '\'' +
+//                ", Объём двигателя в литрах: " + engineVolume +
+//                ", Цвет: '" + color + '\'' +
+//                ", Год производства: " + productionYear +
+//                ", Страна сборки: '" + productionCountry + '\'' +
+//                ", Коробка передач: '" + transmission + '\'' +
+//                ", Тип кузова: '" + bodyType + '\'' +
+//                ", Регистрационный номер: '" + registrationNumber + '\'' +
+//                ", Количество мест: " + numberOfSeats +
+//                ", Тип резины: " + (isTiresType () ? "летняя" : "зимняя") +
+//                ".";
+//    }
 }
