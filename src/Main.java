@@ -81,6 +81,7 @@ public class Main {
 
         //ООП Полиморфизм: ДЗ 1: 1-е задание
 
+
         Train lastochka = new Train("Ласточка", "B-901",
                 2011, "Россия",
                 3500, new Time(0,0,0),
