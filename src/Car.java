@@ -1,28 +1,10 @@
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Car {
+public class Car extends Transport{
 
-    // ДЗ 1: 3-е задание
-    /*
-    String brand;
-    String model;
-    double engineVolume;
-    String color;
-    int productionYear;
-    String productionCountry;
-    */
 
-    // ДЗ 2: 2-е задание
-    private final String brand;
-    private final String model;
     private double engineVolume;
-    private String color;
-    private int productionYear;
-
-    private String productionCountry;
-
-
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
@@ -48,28 +30,9 @@ public class Car {
                String bodyType, String registrationNumber,
                int numberOfSeats, boolean tiresType, Key key, Insurance insurance) {
 
-        if (brand != null) {
-            this.brand = brand;
-        } else {
-            this.brand = "default";
-        }
-
-        if (model != null) {
-            this.model = model;
-        } else {
-            this.model = "default";
-        }
+        super(brand, model, productionYear, productionCountry, color);
 
         this.engineVolume = engineVolume;
-        this.color = color;
-        this.productionYear = productionYear;
-
-        if (productionCountry != null) {
-            this.productionCountry = productionCountry;
-        } else {
-            this.productionCountry = "default";
-        }
-
 
         if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
             this.transmission = "МКПП";
@@ -108,44 +71,12 @@ public class Car {
         }
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
     public double getEngineVolume() {
         return engineVolume;
     }
 
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public void setProductionYear(int productionYear) {
-        this.productionYear = productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
-
-    public void setProductionCountry(String productionCountry) {
-        this.productionCountry = productionCountry;
     }
 
     public String getBodyType() {
@@ -303,12 +234,12 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Автомобиль марки: '" + brand + '\'' +
-                ", Модель: '" + model + '\'' +
+        return "Автомобиль марки: '" + getBrand() + '\'' +
+                ", Модель: '" + getModel() + '\'' +
                 ", Объём двигателя в литрах: " + engineVolume +
-                ", Цвет: '" + color + '\'' +
-                ", Год производства: " + productionYear +
-                ", Страна сборки: '" + productionCountry + '\'' +
+                ", Цвет: '" + getColor() + '\'' +
+                ", Год производства: " + getProductionYear() +
+                ", Страна сборки: '" + getProductionCountry() + '\'' +
                 ", Коробка передач: '" + transmission + '\'' +
                 ", Тип кузова: '" + bodyType + '\'' +
                 ", Регистрационный номер: '" + registrationNumber + '\'' +

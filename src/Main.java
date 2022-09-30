@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.time.LocalDate;
 
 public class Main {
@@ -77,6 +78,26 @@ public class Main {
         // ДЗ 3: 2-е задание
         Car chayka = new Car("GAZ");
         System.out.println(chayka);
+
+        //ООП Полиморфизм: ДЗ 1: 1-е задание
+
+        Train lastochka = new Train("Ласточка", "B-901",
+                2011, "Россия",
+                3500, new Time(0,0,0),
+                "Москва, Белорусский вокзал",
+                "Минск", 11, 301);
+
+        Train leningrad = new Train("Ленинград", "D-125",
+                2019, "Россия",
+                1700, new Time(0,0,0),
+                "Москва, Ленинградский вокзал",
+                "Ленинград-Пассажирский", 8,
+                270);
+
+
+        System.out.println();
+        System.out.println(lastochka);
+        System.out.println(leningrad);
     }
 
     // ДЗ 1: 3-е задание
