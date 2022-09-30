@@ -99,6 +99,22 @@ public class Main {
         System.out.println();
         System.out.println(lastochka);
         System.out.println(leningrad);
+
+        System.out.println();
+        Bus ikarus = new Bus("Икарус", "356", 2018, "Венгрия", "Красный", 150);
+        Bus liaz = new Bus("ЛиАЗ", "14-5", 2011, "Россия", "Жёлтый", 120);
+        Bus laz = new Bus("ЛАЗ", "ZERO", 1969, "Россия", "Белый", 90);
+
+        System.out.println();
+        System.out.println(ikarus);
+        System.out.println(liaz);
+        System.out.println(laz);
+
+        System.out.println();
+        lada.refill();
+        lastochka.refill();
+        ikarus.refill();
+
     }
 
     // ДЗ 1: 3-е задание

@@ -6,6 +6,15 @@ public class Transport {
     private String color;
     private int maxSpeed;
 
+    public Transport(String brand, String model, int productionYear, String productionCountry, String color, int maxSpeed) {
+        this.brand = brand;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.productionCountry = productionCountry;
+        this.color = color;
+        this.maxSpeed = maxSpeed;
+    }
+
     public Transport(String brand, String model, int productionYear, String productionCountry, int maxSpeed) {
         this.brand = brand;
         this.model = model;
@@ -21,6 +30,13 @@ public class Transport {
         this.productionCountry = productionCountry;
         this.color = color;
     }
+
+    public void refill() {
+        System.out.println("Не забудьте заправить ваше транспортное стредство '" +
+                getBrand() + "'");
+    }
+
+
     public String getBrand() {
         return brand;
     }

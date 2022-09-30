@@ -1,7 +1,6 @@
 import java.time.LocalDate;
-import java.util.Objects;
 
-public class Car extends Transport{
+public class Car extends Transport {
 
 
     private double engineVolume;
@@ -71,6 +70,10 @@ public class Car extends Transport{
         }
     }
 
+    public void refill() {
+        super.refill();
+        System.out.println("Выберете соответствующее топливо: бензин, дизель, или электричество.");
+    }
     public double getEngineVolume() {
         return engineVolume;
     }

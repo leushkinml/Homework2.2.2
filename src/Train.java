@@ -1,6 +1,6 @@
 import java.sql.Time;
 
-public class Train extends Transport{
+public class Train extends Transport {
 
     private double tripPrice;
     private Time travelTime;
@@ -58,6 +58,11 @@ public class Train extends Transport{
         } else {
             this.numberOfWagons = numberOfWagons;
         }
+    }
+
+    public void refill() {
+        super.refill();
+        System.out.println("Используйте дизельное топливо.");
     }
 
     public double getTripPrice() {
@@ -125,11 +130,11 @@ public class Train extends Transport{
         return "Поезд: '" + getBrand() + '\'' +
                 ", Модель: '" + getModel() + '\'' +
                 ", Год производства: " + getProductionYear() +
-                ", Страна сборки: '" + getProductionCountry() + '\'' +
+                ", Страна сборки: " + getProductionCountry() +
                 ", Цена поездки: " + tripPrice +
                 ", Время поездки: " + travelTime +
-                ", Станция отправления: " + departureStation + '\'' +
-                ", Станция назначения: " + endingStation + '\'' +
+                ", Станция отправления: " + departureStation +
+                ", Станция назначения: " + endingStation +
                 ", Количество вагонов: " + numberOfWagons +
                 ", Скорость передвижения: " + getMaxSpeed() +
                 '.';
