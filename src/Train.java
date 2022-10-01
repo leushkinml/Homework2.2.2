@@ -8,7 +8,8 @@ public class Train extends Transport {
     private String endingStation;
     private int numberOfWagons;
 
-    public Train(String brand) {
+    public Train(String brand)
+    {
         this(brand, "default", 1900,
                 "default", 0.0,
                 new Time(0,0,0),
