@@ -29,35 +29,15 @@ public class Train extends Transport {
     {
         super(brand, model, productionYear, productionCountry, maxSpeed);
 
-        if (tripPrice < 0) {
-            this.tripPrice = 0;
-        } else {
-            this.tripPrice = tripPrice;
-        }
+        this.setTripPrice(tripPrice);
 
-        if (travelTime < 0) {
-            this.travelTime = 0;
-        } else {
-            this.travelTime = travelTime;
-        }
+        this.setTravelTime(travelTime);
 
-        if (departureStation == null || departureStation.isBlank()) {
-            this.departureStation = "Станция отправления не задана";
-        } else {
-            this.departureStation = departureStation;
-        }
+        this.setDepartureStation(departureStation);
 
-        if (endingStation == null || endingStation.isBlank()) {
-            this.endingStation = "Станция назначения не задана";
-        } else {
-            this.endingStation = endingStation;
-        }
+        this.setEndingStation(endingStation);
 
-        if (numberOfWagons < 0) {
-            this.numberOfWagons = 0;
-        } else {
-            this.numberOfWagons = numberOfWagons;
-        }
+        this.setNumberOfWagons(numberOfWagons);
     }
 
     public void refill() {

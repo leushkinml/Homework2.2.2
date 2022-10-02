@@ -31,8 +31,8 @@ public class Transport {
         this.color = color;
     }
 
-    public void refill() {
-
+    public void  refill() {
+//Должен быть абстрактным
     }
 
 

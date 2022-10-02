@@ -33,11 +33,8 @@ public class Car extends Transport {
 
         this.engineVolume = engineVolume;
 
-        if (transmission == null || transmission.isBlank()) {
-            this.transmission = "МКПП";
-        } else {
-            this.transmission = transmission;
-        }
+        this.setTransmission(transmission);
+
         if (bodyType == null || bodyType.isBlank()) {
             this.bodyType = "Седан";
         } else {
