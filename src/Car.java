@@ -25,7 +25,7 @@ public class Car extends Transport {
 
     public Car(String brand, String model, double engineVolume,
                String color, int productionYear,
-               String productionCountry, String transmission,
+               String productionCountry,  String transmission,
                String bodyType, String registrationNumber,
                int numberOfSeats, boolean tiresType, Key key, Insurance insurance) {
 
@@ -33,17 +33,17 @@ public class Car extends Transport {
 
         this.engineVolume = engineVolume;
 
-        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+        if (transmission == null || transmission.isBlank()) {
             this.transmission = "МКПП";
         } else {
             this.transmission = transmission;
         }
-        if (bodyType == null || bodyType.isEmpty() || bodyType.isBlank()) {
+        if (bodyType == null || bodyType.isBlank()) {
             this.bodyType = "Седан";
         } else {
             this.bodyType = bodyType;
         }
-        if (registrationNumber == null || registrationNumber.isEmpty() || registrationNumber.isBlank()) {
+        if (registrationNumber == null || registrationNumber.isBlank()) {
             this.registrationNumber = "x000xx000";
         } else {
             this.registrationNumber = registrationNumber;
@@ -94,7 +94,7 @@ public class Car extends Transport {
         return transmission;
     }
     public void setTransmission(String transmission) {
-        if (transmission == null || transmission.isEmpty() || transmission.isBlank()) {
+        if (transmission == null || transmission.isBlank()) {
             this.transmission = "МКПП";
         } else {
             this.transmission = transmission;

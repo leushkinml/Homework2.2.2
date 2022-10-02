@@ -32,8 +32,7 @@ public class Transport {
     }
 
     public void refill() {
-        System.out.println("Не забудьте заправить ваше транспортное стредство '" +
-                getBrand() + "'");
+
     }
 
 
@@ -58,7 +57,7 @@ public class Transport {
     }
 
     public void setColor(String color) {
-        if (color == null || color.isEmpty() || color.isBlank()) {
+        if (color == null || color.isBlank()) {
             this.color = "Белый";
         } else {
             this.color = color;

@@ -3,7 +3,7 @@ import java.sql.Time;
 public class Train extends Transport {
 
     private double tripPrice;
-    private Time travelTime;
+    private int travelTime;
     private String departureStation;
     private String endingStation;
     private int numberOfWagons;
@@ -11,8 +11,7 @@ public class Train extends Transport {
     public Train(String brand)
     {
         this(brand, "default", 1900,
-                "default", 0.0,
-                new Time(0,0,0),
+                "default", 0.0, 0,
                 "Станция отправления не задана",
                 "Станция назначения не задана",
                 0, 0);
@@ -22,7 +21,7 @@ public class Train extends Transport {
     public Train(String brand, String model,
                  int productionYear,
                  String productionCountry, double tripPrice,
-                 Time travelTime,
+                 int travelTime,
                  String departureStation,
                  String endingStation,
                  int numberOfWagons, int maxSpeed)
@@ -36,19 +35,19 @@ public class Train extends Transport {
             this.tripPrice = tripPrice;
         }
 
-        if (travelTime == null) {
-            this.travelTime = new Time(0,0, 0);
+        if (travelTime < 0) {
+            this.travelTime = 0;
         } else {
             this.travelTime = travelTime;
         }
 
-        if (departureStation == null || departureStation.isEmpty() || departureStation.isBlank()) {
+        if (departureStation == null || departureStation.isBlank()) {
             this.departureStation = "Станция отправления не задана";
         } else {
             this.departureStation = departureStation;
         }
 
-        if (endingStation == null || endingStation.isEmpty() || endingStation.isBlank()) {
+        if (endingStation == null || endingStation.isBlank()) {
             this.endingStation = "Станция назначения не задана";
         } else {
             this.endingStation = endingStation;
@@ -62,7 +61,6 @@ public class Train extends Transport {
     }
 
     public void refill() {
-        super.refill();
         System.out.println("Используйте дизельное топливо.");
     }
 
@@ -78,13 +76,13 @@ public class Train extends Transport {
         }
     }
 
-    public Time getTravelTime() {
+    public int getTravelTime() {
         return travelTime;
     }
 
-    public void setTravelTime(Time travelTime) {
-        if (travelTime == null) {
-            this.travelTime = new Time(0,0, 0);
+    public void setTravelTime(int travelTime) {
+        if (travelTime < 0) {
+            this.travelTime = 0;
         } else {
             this.travelTime = travelTime;
         }
@@ -95,7 +93,7 @@ public class Train extends Transport {
     }
 
     public void setDepartureStation(String departureStation) {
-        if (departureStation == null || departureStation.isEmpty() || departureStation.isBlank()) {
+        if (departureStation == null || departureStation.isBlank()) {
             this.departureStation = "Станция отправления не задана";
         } else {
             this.departureStation = departureStation;
@@ -107,7 +105,7 @@ public class Train extends Transport {
     }
 
     public void setEndingStation(String endingStation) {
-        if (endingStation == null || endingStation.isEmpty() || endingStation.isBlank()) {
+        if (endingStation == null || endingStation.isBlank()) {
             this.endingStation = "Станция назначения не задана";
         } else {
             this.endingStation = endingStation;
