@@ -1,4 +1,4 @@
-public class Transport {
+public abstract class Transport {
     private String brand;
     private String model;
     private int productionYear;
@@ -32,9 +32,7 @@ public class Transport {
     }
 
 
-    public void  refill() {
-//Должен быть абстрактным
-    }
+    public abstract void  refill();
 
 
     public String getBrand() {

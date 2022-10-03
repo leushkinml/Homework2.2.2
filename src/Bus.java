@@ -8,8 +8,8 @@ public class Bus extends Transport {
         super(brand, model, productionYear, productionCountry, color, maxSpeed);
     }
 
+    @Override
     public void refill() {
-        super.refill();
         System.out.println("Выберете соответствующее топливо: бензин или дизель.");
     }
     @Override

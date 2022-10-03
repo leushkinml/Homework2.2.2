@@ -66,9 +66,8 @@ public class Car extends Transport {
             this.insurance = insurance;
         }
     }
-
+    @Override
     public void refill() {
-        super.refill();
         System.out.println("Выберете соответствующее топливо: бензин, дизель, или электричество.");
     }
     public double getEngineVolume() {
