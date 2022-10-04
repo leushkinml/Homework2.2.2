@@ -20,7 +20,20 @@ public class Main {
         Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8);
         Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6);
 
-
+        System.out.println(firstCar);
+        System.out.println(secondCar);
+        System.out.println(thirdCar);
+        System.out.println(forthCar);
+        System.out.println();
+        System.out.println(firstBus);
+        System.out.println(secondBus);
+        System.out.println(thirdBus);
+        System.out.println(forthBus);
+        System.out.println();
+        System.out.println(firstTruck);
+        System.out.println(secondTruck);
+        System.out.println(thirdTruck);
+        System.out.println(forthTruck);
     }
 }
 

@@ -1,4 +1,4 @@
-public class Bus extends Transport{
+public class Bus extends Transport implements Competing{
 
     public Bus(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
@@ -10,6 +10,31 @@ public class Bus extends Transport{
 
     @Override
     public void finishMoving() {
+    }
+
+    @Override
+    public boolean isPitStop() {
+        return false;
+    }
+
+    @Override
+    public int getBestLapTime() {
+        return 0;
+    }
+
+    @Override
+    public int getMaxSpeed() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Автобус марки: '" + getBrand() +
+                ", Модель: " + getModel() +
+                ", Объём двигателя в литрах: " + getEngineVolume() +
+                ", Лучшее время круга: " + getBestLapTime() +
+                ", Максимальная скорость: " + getMaxSpeed() +
+                ".";
     }
 }
 

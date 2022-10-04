@@ -1,6 +1,4 @@
-import java.time.LocalDate;
-
-public class Car extends Transport {
+public class Car extends Transport implements Competing{
 
 
         public Car(String brand, String model, double engineVolume) {
@@ -13,6 +11,31 @@ public class Car extends Transport {
 
         @Override
         public void finishMoving() {
+        }
+
+        @Override
+        public boolean isPitStop() {
+                return false;
+        }
+
+        @Override
+        public int getBestLapTime() {
+                return 0;
+        }
+
+        @Override
+        public int getMaxSpeed() {
+                return 0;
+        }
+
+        @Override
+        public String toString() {
+                return "Легковой автомобиль марки: '" + getBrand() +
+                        ", Модель: " + getModel() +
+                        ", Объём двигателя в литрах: " + getEngineVolume() +
+                        ", Лучшее время круга: " + getBestLapTime() +
+                        ", Максимальная скорость: " + getMaxSpeed() +
+                        ".";
         }
 }
 
