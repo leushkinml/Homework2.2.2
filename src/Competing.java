@@ -1,10 +1,10 @@
 public interface Competing {
 
-    boolean isPitStop();
-
-    int getBestLapTime();
-
-    int getMaxSpeed();
+    void isPitStop(boolean pitStop);
 
 
+    void getBestLapTime(int time);
+
+
+    void getMaxSpeed(int time);
 }

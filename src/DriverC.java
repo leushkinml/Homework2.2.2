@@ -1,5 +1,3 @@
-import transport.Drivers;
-
 public class DriverC extends Drivers {
 
     public static final String DL_CATEGORY = "C";

@@ -1,7 +1,5 @@
-import transport.Drivers;
+public class DriverB extends Drivers  {
 
-public class DriverB extends Drivers   {
-//public class Trainer<A extends Pet & Trained>
 
     public static final String DL_CATEGORY = "B";
 
@@ -24,10 +22,12 @@ public class DriverB extends Drivers   {
 
     }
 
-    @Override
-    public String toString() {
-        return "Водитель " + getFullName() +
-                " управляет автомобилем " + getClass() +
-                " и будет участвовать в заезде.";
-    }
+//    @Override
+//    public String toString() {
+//        return "Водитель : '" + getFullName() +
+//                "Водительские права катекории: '" + DL_CATEGORY +
+//                ", Управляет автомобилями категории: " + getClass() +
+//                ", Стаж управления автомобилем: '" + getDrivingExperience() + '\'' +
+//                ".";
+//    }
 }

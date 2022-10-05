@@ -12,29 +12,34 @@ public class Bus extends Transport implements Competing{
     public void finishMoving() {
     }
 
-    @Override
-    public boolean isPitStop() {
-        return false;
-    }
-
-    @Override
-    public int getBestLapTime() {
-        return 0;
-    }
-
-    @Override
-    public int getMaxSpeed() {
-        return 0;
-    }
 
     @Override
     public String toString() {
         return "Автобус марки: '" + getBrand() +
                 ", Модель: " + getModel() +
                 ", Объём двигателя в литрах: " + getEngineVolume() +
-                ", Лучшее время круга: " + getBestLapTime() +
-                ", Максимальная скорость: " + getMaxSpeed() +
                 ".";
+    }
+
+
+    @Override
+    public void isPitStop(boolean pitStop) {
+        if (pitStop == true) {
+            System.out.println("Автобус " + getModel() + " на ПитСтопе.");
+        } else {
+            System.out.println("Автобус " + getModel() + " на трассе.");
+        }
+    }
+
+    @Override
+    public void getBestLapTime(int time) {
+        System.out.println("У автобуса " + getModel() + " лучшее время круга " + time + " секунд.");
+    }
+
+    @Override
+    public void getMaxSpeed(int time) {
+        int speed = 900/time;
+        System.out.println("У автобуса " + getModel() + " максимальная скорость " + speed + " метров в секунду.");
     }
 }
 

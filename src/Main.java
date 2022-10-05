@@ -5,18 +5,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Car firstCar = new Car("ВАЗ","Гранта", 2.5);
+        Car firstCar = new Car("ВАЗ","Лада Гранта", 2.5);
         Car secondCar = new Car("АЗЛК","Москвич", 1.5);
         Car thirdCar = new Car("УАЗ","Патриот", 1.8);
         Car forthCar = new Car("КАМАЗ","Ока", 3.6);
 
         Bus firstBus = new Bus("ЛИАЗ","Прогресс", 3.9);
         Bus secondBus = new Bus("ЛАЗ","Городской", 4.5);
-        Bus thirdBus = new Bus("ПАЗ","ТДС", 2.8);
+        Bus thirdBus = new Bus("ПАЗ"," ПАЗ ТДС", 2.8);
         Bus forthBus = new Bus("ГАЗ","Газон", 3.6);
 
-        Truck firstTruck = new Truck("КАМАЗ","Тягач", 12.0);
-        Truck secondTruck = new Truck("ЗИЛ","130", 10.5);
+        Truck firstTruck = new Truck("КАМАЗ","КАМАЗ СПОРТ", 12.0);
+        Truck secondTruck = new Truck("ЗИЛ","ЗИЛ 130", 10.5);
         Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8);
         Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6);
 
@@ -35,12 +35,33 @@ public class Main {
         System.out.println(thirdTruck);
         System.out.println(forthTruck);
 
-        DriverB ivanov = new DriverB("Иванов Иван Иванович", 20);
-        DriverC petrov = new DriverC("Петров Пётр Петрович", 18);
-        DriverD sidorov = new DriverD("Сидоров Сидор Сидорович", 22);
+        System.out.println();
+        firstCar.isPitStop(true);
+        secondCar.getBestLapTime(85);
+        forthCar.getMaxSpeed(85);
 
         System.out.println();
-        System.out.println(ivanov);
+        secondBus.isPitStop(false);
+        thirdBus.getBestLapTime(136);
+        forthBus.getMaxSpeed(136);
+
+        System.out.println();
+        firstTruck.isPitStop(true);
+        secondTruck.getBestLapTime(154);
+        thirdTruck.getMaxSpeed(154);
+
+        System.out.println();
+        System.out.println();
+        Drivers<Car> ivanov = new Drivers<>("Иванов Иван Иванович", 20);
+        ivanov.race(firstCar);
+        System.out.println();
+
+        Drivers<Truck> petrov = new Drivers<>("Петров Пётр Петрович", 25);
+        petrov.race(secondTruck);
+        System.out.println();
+
+        Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30);
+        sidorov.race(thirdBus);
     }
 }
 

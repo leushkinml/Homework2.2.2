@@ -14,28 +14,31 @@ public class Car extends Transport implements Competing{
         }
 
         @Override
-        public boolean isPitStop() {
-                return false;
-        }
-
-        @Override
-        public int getBestLapTime() {
-                return 0;
-        }
-
-        @Override
-        public int getMaxSpeed() {
-                return 0;
-        }
-
-        @Override
         public String toString() {
                 return "Легковой автомобиль марки: '" + getBrand() +
                         ", Модель: " + getModel() +
                         ", Объём двигателя в литрах: " + getEngineVolume() +
-                        ", Лучшее время круга: " + getBestLapTime() +
-                        ", Максимальная скорость: " + getMaxSpeed() +
                         ".";
+        }
+
+        @Override
+        public void isPitStop(boolean pitStop) {
+                if (pitStop == true) {
+                        System.out.println("Машина " + getModel() + " на ПитСтопе.");
+                } else {
+                        System.out.println("Машина " + getModel() + " на трассе.");
+                }
+        }
+
+        @Override
+        public void getBestLapTime(int time) {
+                System.out.println("У машины " + getModel() + " лучшее время круга " + time + " секунд.");
+        }
+
+        @Override
+        public void getMaxSpeed(int time) {
+                int speed = 900/time;
+                System.out.println("У машины " + getModel() + " максимальная скорость " + speed + " метров в секунду.");
         }
 }
 

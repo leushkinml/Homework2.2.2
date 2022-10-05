@@ -12,20 +12,6 @@ public class Truck extends Transport implements Competing{
     public void finishMoving() {
     }
 
-    @Override
-    public boolean isPitStop() {
-        return false;
-    }
-
-    @Override
-    public int getBestLapTime() {
-        return 0;
-    }
-
-    @Override
-    public int getMaxSpeed() {
-        return 0;
-    }
 
     @Override
     public String toString() {
@@ -33,5 +19,25 @@ public class Truck extends Transport implements Competing{
                 ", Модель: " + getModel() +
                 ", Объём двигателя в литрах: " + getEngineVolume() +
                 ".";
+    }
+
+    @Override
+    public void isPitStop(boolean pitStop) {
+        if (pitStop == true) {
+            System.out.println("Грузовик " + getModel() + " на ПитСтопе.");
+        } else {
+            System.out.println("Грузовик " + getModel() + " на трассе.");
+        }
+    }
+
+    @Override
+    public void getBestLapTime(int time) {
+        System.out.println("У грузовика " + getModel() + " лучшее время круга " + time + " секунд.");
+    }
+
+    @Override
+    public void getMaxSpeed(int time) {
+        int speed = 900/time;
+        System.out.println("У грузовика " + getModel() + " максимальная скорость " + speed + " метров в секунду.");
     }
 }
