@@ -34,6 +34,13 @@ public class Main {
         System.out.println(secondTruck);
         System.out.println(thirdTruck);
         System.out.println(forthTruck);
+
+        DriverB ivanov = new DriverB("Иванов Иван Иванович", 20);
+        DriverC petrov = new DriverC("Петров Пётр Петрович", 18);
+        DriverD sidorov = new DriverD("Сидоров Сидор Сидорович", 22);
+
+        System.out.println();
+        System.out.println(ivanov);
     }
 }
 
