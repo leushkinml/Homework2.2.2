@@ -1,25 +1,16 @@
 public class DriverB extends Drivers  {
 
-
-    public static final String DL_CATEGORY = "B";
-
     public DriverB(String fullName, int drivingExperience) {
         super(fullName, drivingExperience);
     }
-
     @Override
     public void startMoving() {
-
     }
-
     @Override
     public void finishMoving() {
-
     }
-
     @Override
     public void refuelVehicle() {
-
     }
 
 //    @Override

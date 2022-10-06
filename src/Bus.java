@@ -6,13 +6,12 @@ public class Bus extends Transport implements Competing{
 
     @Override
     public void startMoving() {
+        System.out.println("Автобус начал движение");
     }
-
     @Override
     public void finishMoving() {
+        System.out.println("Автобус закончил движение");
     }
-
-
     @Override
     public String toString() {
         return "Автобус марки: '" + getBrand() +
@@ -20,8 +19,6 @@ public class Bus extends Transport implements Competing{
                 ", Объём двигателя в литрах: " + getEngineVolume() +
                 ".";
     }
-
-
     @Override
     public void isPitStop(boolean pitStop) {
         if (pitStop == true) {
@@ -30,12 +27,10 @@ public class Bus extends Transport implements Competing{
             System.out.println("Автобус " + getModel() + " на трассе.");
         }
     }
-
     @Override
     public void getBestLapTime(int time) {
         System.out.println("У автобуса " + getModel() + " лучшее время круга " + time + " секунд.");
     }
-
     @Override
     public void getMaxSpeed(int time) {
         int speed = 900/time;

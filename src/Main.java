@@ -1,8 +1,6 @@
 import java.sql.Time;
 import java.time.LocalDate;
-
 public class Main {
-
     public static void main(String[] args) {
 
         Car firstCar = new Car("ВАЗ","Лада Гранта", 2.5);

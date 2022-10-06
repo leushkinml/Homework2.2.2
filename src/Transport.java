@@ -10,22 +10,17 @@ public abstract class Transport {
     }
 
     public abstract void startMoving();
-
     public abstract void finishMoving();
-
 
     public String getModel() {
         return model;
     }
-
     public String getBrand() {
         return brand;
     }
-
     public double getEngineVolume() {
         return engineVolume;
     }
-
     public void setEngineVolume(double engineVolume) {
         if (engineVolume < 0) {
             this.engineVolume = 0;

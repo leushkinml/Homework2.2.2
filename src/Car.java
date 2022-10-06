@@ -1,18 +1,17 @@
 public class Car extends Transport implements Competing{
 
-
         public Car(String brand, String model, double engineVolume) {
                 super(brand, model, engineVolume);
         }
 
         @Override
         public void startMoving() {
+                System.out.println("Автомобиль начал движение");
         }
-
         @Override
         public void finishMoving() {
+                System.out.println("Автомобиль закончил движение");
         }
-
         @Override
         public String toString() {
                 return "Легковой автомобиль марки: '" + getBrand() +
@@ -20,7 +19,6 @@ public class Car extends Transport implements Competing{
                         ", Объём двигателя в литрах: " + getEngineVolume() +
                         ".";
         }
-
         @Override
         public void isPitStop(boolean pitStop) {
                 if (pitStop == true) {
@@ -29,12 +27,10 @@ public class Car extends Transport implements Competing{
                         System.out.println("Машина " + getModel() + " на трассе.");
                 }
         }
-
         @Override
         public void getBestLapTime(int time) {
                 System.out.println("У машины " + getModel() + " лучшее время круга " + time + " секунд.");
         }
-
         @Override
         public void getMaxSpeed(int time) {
                 int speed = 900/time;
