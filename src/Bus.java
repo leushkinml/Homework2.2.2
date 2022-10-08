@@ -1,5 +1,7 @@
 public class Bus extends Transport implements Competing{
 
+    public enum CapacityType {EXTRA_SMALL, SMALL, MEDIUM, LARGE, EXTRA_LARGE}
+
     public Bus(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }

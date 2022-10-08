@@ -60,6 +60,11 @@ public class Main {
 
         Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30);
         sidorov.race(thirdBus);
+
+        Drivers kukushkin = new DriverD ("Кукушкин", 15);
+        kukushkin.race(secondCar);
+
+
     }
 }
 

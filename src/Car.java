@@ -1,5 +1,7 @@
 public class Car extends Transport implements Competing{
 
+        public enum BodyType {SEDAN, HATCHBACK, COUPE, UNIVERSAL, SUV, CROSSOVER, PICKUP, VAN, MINIVAN}
+
         public Car(String brand, String model, double engineVolume) {
                 super(brand, model, engineVolume);
         }
