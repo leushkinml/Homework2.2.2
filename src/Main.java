@@ -3,20 +3,20 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
-        Car firstCar = new Car("ВАЗ","Лада Гранта", 2.5);
-        Car secondCar = new Car("АЗЛК","Москвич", 1.5);
-        Car thirdCar = new Car("УАЗ","Патриот", 1.8);
-        Car forthCar = new Car("КАМАЗ","Ока", 3.6);
+        Car firstCar = new Car("ВАЗ","Лада Гранта", 2.5, CarBodyType.SEDAN);
+        Car secondCar = new Car("АЗЛК","Москвич", 1.5, CarBodyType.CROSSOVER);
+        Car thirdCar = new Car("УАЗ","Патриот", 1.8, CarBodyType.HATCHBACK);
+        Car forthCar = new Car("КАМАЗ","Ока", 3.6, CarBodyType.COUPE);
 
-        Bus firstBus = new Bus("ЛИАЗ","Прогресс", 3.9);
-        Bus secondBus = new Bus("ЛАЗ","Городской", 4.5);
-        Bus thirdBus = new Bus("ПАЗ"," ПАЗ ТДС", 2.8);
-        Bus forthBus = new Bus("ГАЗ","Газон", 3.6);
+        Bus firstBus = new Bus("ЛИАЗ","Прогресс", 3.9, BusCapacity.LARGE);
+        Bus secondBus = new Bus("ЛАЗ","Городской", 4.5, BusCapacity.MEDIUM);
+        Bus thirdBus = new Bus("ПАЗ"," ПАЗ ТДС", 2.8, BusCapacity.EXTRA_SMALL);
+        Bus forthBus = new Bus("ГАЗ","Газон", 3.6, BusCapacity.MEDIUM);
 
-        Truck firstTruck = new Truck("КАМАЗ","КАМАЗ СПОРТ", 12.0);
-        Truck secondTruck = new Truck("ЗИЛ","ЗИЛ 130", 10.5);
-        Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8);
-        Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6);
+        Truck firstTruck = new Truck("КАМАЗ","КАМАЗ СПОРТ", 12.0, TruckСarrying.N_1);
+        Truck secondTruck = new Truck("ЗИЛ","ЗИЛ 130", 10.5, TruckСarrying.N_1);
+        Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8, TruckСarrying.N_2);
+        Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6, TruckСarrying.N_3);
 
         System.out.println(firstCar);
         System.out.println(secondCar);
@@ -52,18 +52,32 @@ public class Main {
         System.out.println();
         Drivers<Car> ivanov = new Drivers<>("Иванов Иван Иванович", 20);
         ivanov.race(firstCar);
-        System.out.println();
 
         Drivers<Truck> petrov = new Drivers<>("Петров Пётр Петрович", 25);
         petrov.race(secondTruck);
-        System.out.println();
 
         Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30);
         sidorov.race(thirdBus);
 
-        Drivers kukushkin = new DriverD ("Кукушкин", 15);
-        kukushkin.race(secondCar);
+        System.out.println();
+        firstCar.determineCarType();
+        secondCar.determineCarType();
+        thirdCar.determineCarType();
+        forthCar.determineCarType();
 
+        System.out.println();
+
+        firstBus.determineCarType();
+        secondBus.determineCarType();
+        thirdBus.determineCarType();
+        forthBus.determineCarType();
+
+        System.out.println();
+
+        firstTruck.determineCarType();
+        secondTruck.determineCarType();
+        thirdTruck.determineCarType();
+        forthTruck.determineCarType();
 
     }
 }

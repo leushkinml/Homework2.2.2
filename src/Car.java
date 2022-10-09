@@ -1,9 +1,9 @@
 public class Car extends Transport implements Competing{
 
-        public enum BodyType {SEDAN, HATCHBACK, COUPE, UNIVERSAL, SUV, CROSSOVER, PICKUP, VAN, MINIVAN}
-
-        public Car(String brand, String model, double engineVolume) {
+        private CarBodyType carBodyType;
+        public Car(String brand, String model, double engineVolume, CarBodyType carBodyType) {
                 super(brand, model, engineVolume);
+                this.carBodyType = carBodyType;
         }
 
         @Override
@@ -14,6 +14,16 @@ public class Car extends Transport implements Competing{
         public void finishMoving() {
                 System.out.println("Автомобиль закончил движение");
         }
+
+        @Override
+        public void determineCarType() {
+                if (carBodyType == null ) {
+                        System.out.println("Данных по транспортному средству недостаточно.");
+                } else {
+                        System.out.println("Тип кузова автомобиля " + getModel() + ": "+ carBodyType.name() + ".");
+                }
+        }
+
         @Override
         public String toString() {
                 return "Легковой автомобиль марки: '" + getBrand() +

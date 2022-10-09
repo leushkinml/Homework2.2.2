@@ -1,9 +1,10 @@
 public class Bus extends Transport implements Competing{
 
-    public enum CapacityType {EXTRA_SMALL, SMALL, MEDIUM, LARGE, EXTRA_LARGE}
+    private BusCapacity busCapacity;
 
-    public Bus(String brand, String model, double engineVolume) {
+    public Bus(String brand, String model, double engineVolume, BusCapacity busCapacity) {
         super(brand, model, engineVolume);
+        this.busCapacity = busCapacity;
     }
 
     @Override
@@ -14,6 +15,16 @@ public class Bus extends Transport implements Competing{
     public void finishMoving() {
         System.out.println("Автобус закончил движение");
     }
+
+    @Override
+    public void determineCarType() {
+        if (busCapacity == null ) {
+            System.out.println("Данных по транспортному средству недостаточно.");
+        } else {
+            System.out.println("Тип пассажирской вместимости автобуса " + getModel() + ": "+ busCapacity.name() + ". Вместимость автобуса: от " + busCapacity.getFrom() + "  до " + busCapacity.getTo() + " человек.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Автобус марки: '" + getBrand() +
