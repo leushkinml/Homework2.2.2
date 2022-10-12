@@ -18,6 +18,12 @@ public class Main {
         Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8, TruckСarrying.N_2);
         Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6, TruckСarrying.N_3);
 
+        service(
+                firstCar, secondCar, thirdCar, forthCar,
+                firstTruck, secondTruck, thirdTruck, forthTruck,
+                firstBus, secondBus, thirdBus, forthBus
+        );
+
         System.out.println(firstCar);
         System.out.println(secondCar);
         System.out.println(thirdCar);
@@ -50,13 +56,13 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        Drivers<Car> ivanov = new Drivers<>("Иванов Иван Иванович", 20);
+        Drivers<Car> ivanov = new Drivers<>("Иванов Иван Иванович", 20, "B");
         ivanov.race(firstCar);
 
-        Drivers<Truck> petrov = new Drivers<>("Петров Пётр Петрович", 25);
+        Drivers<Truck> petrov = new Drivers<>("Петров Пётр Петрович", 25, "C");
         petrov.race(secondTruck);
 
-        Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30);
+        Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30, "D");
         sidorov.race(thirdBus);
 
         System.out.println();
@@ -79,6 +85,22 @@ public class Main {
         thirdTruck.determineCarType();
         forthTruck.determineCarType();
 
+    }
+
+    private static void service(Transport... transports) {
+        for (Transport transport : transports) {
+                serviceTransport(transport);
+        }
+    }
+
+    private static void serviceTransport(Transport transport) {
+        try {
+            if(!transport.service()) {
+                throw new RuntimeException("Автомобиль " + transport.getBrand() + " " + transport.getModel() + " не прошёл диагностику.");
+            }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 

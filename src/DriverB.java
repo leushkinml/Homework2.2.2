@@ -1,7 +1,7 @@
 public class DriverB extends Drivers  {
 
-    public DriverB(String fullName, int drivingExperience) {
-        super(fullName, drivingExperience);
+    public DriverB(String fullName, int drivingExperience, String category) {
+        super(fullName, drivingExperience, category);
     }
 
     @Override

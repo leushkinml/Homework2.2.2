@@ -14,6 +14,8 @@ public abstract class Transport {
 
     public abstract void determineCarType();
 
+    public abstract boolean service();
+
     public String getModel() {
         return model;
     }
@@ -23,6 +25,8 @@ public abstract class Transport {
     public double getEngineVolume() {
         return engineVolume;
     }
+
+
     public void setEngineVolume(double engineVolume) {
         if (engineVolume < 0) {
             this.engineVolume = 0;

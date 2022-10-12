@@ -25,6 +25,11 @@ public class Truck extends Transport implements Competing{
     }
 
     @Override
+    public boolean service() {
+        return Math.random() > 0.5;
+    }
+
+    @Override
     public String toString() {
         return "Грузовой автомобиль марки: '" + getBrand() +
                 ", Модель: " + getModel() +
