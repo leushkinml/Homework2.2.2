@@ -1,4 +1,4 @@
-public class DriverB extends Drivers  {
+public class DriverB extends Driver  {
 
     public DriverB(String fullName, int drivingExperience, String category) {
         super(fullName, drivingExperience, category);

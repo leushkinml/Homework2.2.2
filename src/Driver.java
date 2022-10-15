@@ -1,10 +1,10 @@
-public class Drivers<D extends Transport & Competing> {
+public class Driver<D extends Transport & Competing> {
 
     private final String fullName;
     private int drivingExperience;
     private String category;
 
-    public Drivers(String fullName, int drivingExperience, String category) {
+    public Driver(String fullName, int drivingExperience, String category) {
         this.fullName = fullName;
         this.setDrivingExperience(drivingExperience);
         setCategory(category);
@@ -41,5 +41,10 @@ public class Drivers<D extends Transport & Competing> {
         } else {
             this.drivingExperience = drivingExperience;
         }
+    }
+
+    @Override
+    public String toString() {
+        return fullName + ", стаж вождения: " + drivingExperience + " лет, категория " + category;
     }
 }

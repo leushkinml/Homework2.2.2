@@ -1,28 +1,100 @@
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
+        Driver<Car> ivanov = new Driver<>("Иванов Иван Иванович", 20, "B");
+        Driver<Truck> petrov = new Driver<>("Петров Пётр Петрович", 25, "C");
+        Driver<Bus> sidorov = new Driver<>("Сидоров Сидор Сидорович", 30, "D");
+
+        Mechanic jon = new Mechanic<>("Jon", "Black", "ABC");
+//        Mechanic jon = new Mechanic<Car>("Jon", "Black", "ABC");
+        Mechanic bill = new Mechanic<>("Bill", "Wight", "ABC");
+//        Mechanic bill = new Mechanic<Transport>("Bill", "Wight", "ABC");
+
+        Sponsor frolov = new Sponsor("Froilov", 1_000_000);
+        Sponsor gazprom = new Sponsor("GAZPROM", 5_000_000);
+
+
         Car firstCar = new Car("ВАЗ","Лада Гранта", 2.5, CarBodyType.SEDAN);
+        firstCar.addDriver(ivanov);
+        firstCar.addMechanic(jon);
+        firstCar.addSponsor(frolov, gazprom);
         Car secondCar = new Car("АЗЛК","Москвич", 1.5, CarBodyType.CROSSOVER);
+        secondCar.addDriver(ivanov);
+        secondCar.addMechanic(jon);
+        secondCar.addSponsor(gazprom);
         Car thirdCar = new Car("УАЗ","Патриот", 1.8, CarBodyType.HATCHBACK);
+        thirdCar.addDriver(ivanov);
+        thirdCar.addMechanic(jon);
+        thirdCar.addSponsor(frolov);
         Car forthCar = new Car("КАМАЗ","Ока", 3.6, CarBodyType.COUPE);
+        forthCar.addDriver(ivanov);
+        forthCar.addMechanic(jon);
+        forthCar.addSponsor();
 
         Bus firstBus = new Bus("ЛИАЗ","Прогресс", 3.9, BusCapacity.LARGE);
+        firstBus.addDriver(petrov);
+        firstBus.addMechanic(bill);
+        firstBus.addSponsor(frolov, gazprom);
         Bus secondBus = new Bus("ЛАЗ","Городской", 4.5, BusCapacity.MEDIUM);
+        secondBus.addDriver(petrov);
+        secondBus.addMechanic(bill);
+        secondBus.addSponsor(gazprom);
         Bus thirdBus = new Bus("ПАЗ"," ПАЗ ТДС", 2.8, BusCapacity.EXTRA_SMALL);
+        thirdBus.addDriver(petrov);
+        thirdBus.addMechanic(bill);
+        thirdBus.addSponsor(frolov);
         Bus forthBus = new Bus("ГАЗ","Газон", 3.6, BusCapacity.MEDIUM);
+        forthBus.addDriver(petrov);
+        forthBus.addMechanic(bill);
+        forthBus.addSponsor();
 
         Truck firstTruck = new Truck("КАМАЗ","КАМАЗ СПОРТ", 12.0, TruckСarrying.N_1);
+        firstTruck.addDriver(sidorov);
+        firstTruck.addMechanic(bill);
+        firstTruck.addSponsor(gazprom, frolov);
         Truck secondTruck = new Truck("ЗИЛ","ЗИЛ 130", 10.5, TruckСarrying.N_1);
+        secondTruck.addDriver(sidorov);
+        secondTruck.addMechanic(bill);
+        secondTruck.addSponsor(gazprom, frolov);
         Truck thirdTruck = new Truck("ГАЗ","Газель", 11.8, TruckСarrying.N_2);
+        thirdTruck.addDriver(sidorov);
+        thirdTruck.addMechanic(bill);
+        thirdTruck.addSponsor(gazprom, frolov);
         Truck forthTruck = new Truck("ВАЗ","Фермер", 9.6, TruckСarrying.N_3);
+        forthTruck.addDriver(sidorov);
+        forthTruck.addMechanic(bill);
+        forthTruck.addSponsor(gazprom, frolov);
 
-        service(
+        List<Transport> transports = List.of(
                 firstCar, secondCar, thirdCar, forthCar,
                 firstTruck, secondTruck, thirdTruck, forthTruck,
                 firstBus, secondBus, thirdBus, forthBus
         );
+
+        ServiceStation serviceStation = new ServiceStation();
+        serviceStation.addCar(firstCar);
+        serviceStation.addTruck(secondTruck);
+        serviceStation.addTruck(firstTruck);
+        serviceStation.addCar(forthCar);
+        serviceStation.service();
+        serviceStation.service();
+        serviceStation.service();
+        serviceStation.service();
+
+        System.out.println();
+        for (Transport transport : transports) {
+            printInfo(transport);
+        }
+
+//        service(
+//                firstCar, secondCar, thirdCar, forthCar,
+//                firstTruck, secondTruck, thirdTruck, forthTruck,
+//                firstBus, secondBus, thirdBus, forthBus
+//        );
 
         System.out.println(firstCar);
         System.out.println(secondCar);
@@ -56,13 +128,9 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        Drivers<Car> ivanov = new Drivers<>("Иванов Иван Иванович", 20, "B");
+
         ivanov.race(firstCar);
-
-        Drivers<Truck> petrov = new Drivers<>("Петров Пётр Петрович", 25, "C");
         petrov.race(secondTruck);
-
-        Drivers<Bus> sidorov = new Drivers<>("Сидоров Сидор Сидорович", 30, "D");
         sidorov.race(thirdBus);
 
         System.out.println();
@@ -85,8 +153,29 @@ public class Main {
         thirdTruck.determineCarType();
         forthTruck.determineCarType();
 
+
     }
 
+    private static void printInfo(Transport transport) {
+        System.out.println("Информация по автомобилю " + transport.getBrand() + " " + transport.getModel());
+        System.out.println("Водители: " + transport.getDrivers());
+        System.out.println("Спонсоры: " + transport.getSponsors());
+        System.out.println("Механики: " + transport.getMechanics());
+
+//        System.out.println("Водители: ");
+//        for (Driver<?> driver : transport.getDrivers()) {
+//            System.out.println(driver.getFullName());
+//        }
+//        System.out.println("Спонсоры: ");
+//        for (Sponsor sponsor : transport.getSponsors()) {
+//            System.out.println(sponsor.getName());
+//        }
+//        System.out.println("Механики: ");
+//        for (Mechanic<?> mechanic : transport.getMechanics()) {
+//            System.out.println(mechanic.getName() + " " + mechanic.getSurname() + " " + mechanic.getCompany());
+//        }
+        System.out.println();
+     }
     private static void service(Transport... transports) {
         for (Transport transport : transports) {
                 serviceTransport(transport);
