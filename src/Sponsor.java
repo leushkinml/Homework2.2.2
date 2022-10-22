@@ -1,11 +1,22 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Sponsor {
 
     private final String name;
     private final int amount;
 
+    private Set<Sponsor> sponsors;
+
     public Sponsor(String name, int amount) {
         this.name = name;
         this.amount = amount;
+
+        sponsors = new HashSet<>();
+    }
+
+    public Set<Sponsor> getSponsors() {
+        return sponsors;
     }
 
     public String getName() {

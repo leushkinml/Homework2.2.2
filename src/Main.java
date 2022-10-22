@@ -1,6 +1,8 @@
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -153,6 +155,35 @@ public class Main {
         thirdTruck.determineCarType();
         forthTruck.determineCarType();
 
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(ivanov);
+        drivers.add(petrov);
+        drivers.add(sidorov);
+        drivers.add(sidorov);
+        System.out.println("Список водителей: " + drivers);
+        System.out.println();
+
+        Set<Sponsor> sponsors = new HashSet<>();
+        sponsors.add(frolov);
+        sponsors.add(gazprom);
+        sponsors.add(gazprom);
+        System.out.println("Список спонсоров: " + sponsors);
+        System.out.println();
+
+        Set<Mechanic> mechanics = new HashSet<>();
+        mechanics.add(jon);
+        mechanics.add(bill);
+        mechanics.add(bill);
+        System.out.println("Список механиков: " + mechanics);
+        System.out.println();
+
+        Set<Car> cars = new HashSet<>();
+        cars.add(firstCar);
+        cars.add(secondCar);
+        cars.add(thirdCar);
+        cars.add(forthCar);
+        System.out.println("Список машин: " + cars);
+        System.out.println();
 
     }
 
@@ -175,6 +206,8 @@ public class Main {
 //            System.out.println(mechanic.getName() + " " + mechanic.getSurname() + " " + mechanic.getCompany());
 //        }
         System.out.println();
+
+
      }
     private static void service(Transport... transports) {
         for (Transport transport : transports) {

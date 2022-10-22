@@ -1,9 +1,22 @@
+import com.sun.source.doctree.SeeTree;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Car extends Transport implements Competing{
 
         private CarBodyType carBodyType;
+
+        private Set<Car> cars;
         public Car(String brand, String model, double engineVolume, CarBodyType carBodyType) {
                 super(brand, model, engineVolume);
                 this.carBodyType = carBodyType;
+
+                cars = new HashSet<>();
+        }
+
+        public Set<Car> getCars() {
+                return cars;
         }
 
         @Override

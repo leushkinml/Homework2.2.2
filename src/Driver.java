@@ -1,19 +1,33 @@
+import com.sun.javadoc.SeeTag;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class Driver<D extends Transport & Competing> {
 
     private final String fullName;
     private int drivingExperience;
     private String category;
 
+    private Set<Driver> drivers;
+
     public Driver(String fullName, int drivingExperience, String category) {
         this.fullName = fullName;
         this.setDrivingExperience(drivingExperience);
         setCategory(category);
+
+        drivers = new HashSet<>();
     }
 
     public void race(D transport) {
         System.out.println("Водитель " + getFullName() +" управляет автомобилем " + transport.getModel() +
                 " и будет участвовать в заезде.");
     }
+
+    public Set<Driver> getDrivers() {
+        return drivers;
+    }
+
     public void startMoving() {
     }
     public void finishMoving() {
